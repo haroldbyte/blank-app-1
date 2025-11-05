@@ -7,14 +7,18 @@ import streamlit as st
 from collections import deque
 import pandas as pd
 from datetime import datetime, timedelta, time as dt_time
-
+import snap7, os
+print("snap7 file:", snap7.__file__)
+d = os.path.dirname(snap7.__file__)
+print("dir:", d)
 # Intentar importar snap7 (opcional)
+
 try:
     import snap7
-    from snap7.util import get_bool, get_int
-    SNAP7_AVAILABLE = True
+    print("OK:", snap7)
 except Exception:
-    SNAP7_AVAILABLE = False
+    import traceback
+    traceback.print_exc()
 
 st.set_page_config(page_title="PLC DB4 — Streamlit (rotativo)", layout="wide")
 st.title("Lectura continua DB4 — Rotación POR turnos")
